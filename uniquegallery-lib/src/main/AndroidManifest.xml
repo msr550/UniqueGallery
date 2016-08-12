@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.mobile.android.unique.gallery">
+
+    <application
+        android:allowBackup="true"
+        android:label="@string/app_name"
+        android:supportsRtl="true">
+        <activity android:name=".activities.AlbumActivity">
+            <intent-filter>
+                <action android:name="com.mobile.android.unique.gallery.activities.AlbumActivity" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".activities.GalleryPhotosActivity"
+            android:screenOrientation="portrait" />
+    </application>
+
+</manifest>
