@@ -41,12 +41,18 @@ public class GalleryPhotosActivity extends BaseActivity implements AdapterView.O
         initializeView();
     }
 
+    /**
+     * Initiate the actionBar
+     */
     private void initializeActionBar() {
         toolbar = (Toolbar) findViewById(R.id.tool_bar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
     }
 
+    /**
+     * Used to intialte gridview and loading initializing objects
+     */
     private void initializeView() {
         mView = (GridView) findViewById(R.id.grid_view);
         int position = mView.getFirstVisiblePosition();
@@ -82,6 +88,9 @@ public class GalleryPhotosActivity extends BaseActivity implements AdapterView.O
         return super.onOptionsItemSelected(item);
     }
 
+    /**
+     * Used to load photosAdapter object
+     */
     private void LoadAllAlbum() {
         if (mView != null && mView.getEmptyView() == null) {
             mView.setEmptyView(null);

@@ -23,9 +23,14 @@ public class PhoneMediaControl {
             MediaStore.Images.Media.DATE_TAKEN,
             MediaStore.Images.Media.ORIENTATION
     };
-    public static loadAlbumPhoto loadalbumphoto;
+    public static LoadAlbumPhoto loadalbumphoto;
     private static Context context;
 
+    /**
+     * Used to load the photos from local
+     *
+     * @param mContext Context
+     */
     public static void loadGalleryPhotosAlbums(Context mContext) {
         context = mContext;
 
@@ -97,10 +102,21 @@ public class PhoneMediaControl {
         }).start();
     }
 
+    /**
+     * Used to run on Main thread
+     *
+     * @param runnable Runnable interface reference
+     */
     public static void runOnUIThread(Runnable runnable) {
         runOnUIThread(runnable, 0);
     }
 
+    /**
+     * Used to run on Main thread after certain time delay in millis
+     *
+     * @param runnable Runnable interface reference
+     * @param delay    delay in millis
+     */
     public static void runOnUIThread(Runnable runnable, long delay) {
         if (delay == 0) {
             ApplicationLevel.applicationHandler.post(runnable);
@@ -109,15 +125,30 @@ public class PhoneMediaControl {
         }
     }
 
-    public loadAlbumPhoto getLoadalbumphoto() {
+    /**
+     * used to load thumbnail
+     *
+     * @return
+     */
+    public LoadAlbumPhoto getLoadAlbumphoto() {
         return loadalbumphoto;
     }
 
-    public void setLoadalbumphoto(loadAlbumPhoto loadalbumphoto) {
+    /**
+     * Used to set LoadAlbumPhoto interface reference
+     *
+     * @param loadalbumphoto LoadAlbumPhoto interface reference
+     */
+    public void setLoadalbumphoto(LoadAlbumPhoto loadalbumphoto) {
         this.loadalbumphoto = loadalbumphoto;
     }
 
-    public interface loadAlbumPhoto {
+    public interface LoadAlbumPhoto {
+        /**
+         * Loading local photos
+         *
+         * @param albumsSorted
+         */
         void loadPhoto(ArrayList<PhotoAlbumEntry> albumsSorted);
     }
 }

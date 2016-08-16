@@ -29,7 +29,13 @@ public class AlbumAdapter extends BaseFragmentAdapter {
     private DisplayImageOptions options;
     private ImageLoader imageLoader = ImageLoader.getInstance();
 
-
+    /**
+     * Parameterized constructor
+     *
+     * @param context           Activity Context
+     * @param arrayVideoDetails List of Video paths
+     * @param itemWidth         item width
+     */
     public AlbumAdapter(Context context, ArrayList<Object> arrayVideoDetails, int itemWidth) {
         this.mContext = context;
         this.thumbleLoader = new VideoThumbleLoader(mContext);

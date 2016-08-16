@@ -109,6 +109,10 @@ public class AlbumActivity extends BaseActivity implements AdapterView.OnItemCli
          mView.setSelection(position);
          loadVideoAlbum();
      }*/
+
+    /**
+     * Used to load the media items in a gridview
+     */
     private void loadMedia() {
         int position = mView.getFirstVisiblePosition();
         int columnsCount = 2;
@@ -131,10 +135,13 @@ public class AlbumActivity extends BaseActivity implements AdapterView.OnItemCli
         }
     }
 
+    /**
+     * Used to load the videos from the local paths
+     */
     private void loadVideoAlbum() {
 
         PhoneMediaVideoController mPhoneMediaVideoController = new PhoneMediaVideoController();
-        mPhoneMediaVideoController.setLoadallvideomediainterface(new PhoneMediaVideoController.loadAllVideoMediaInterface() {
+        mPhoneMediaVideoController.setLoadallvideomediainterface(new PhoneMediaVideoController.LoadAllVideoMediaInterface() {
             @Override
             public void loadVideo(ArrayList<VideoAlbumEntry> videoAlbumList) {
                 objects.addAll(videoAlbumList);
@@ -146,9 +153,12 @@ public class AlbumActivity extends BaseActivity implements AdapterView.OnItemCli
         mPhoneMediaVideoController.loadAllVideoMedia(this);
     }
 
+    /**
+     * Used to load the phots from the local paths
+     */
     private void loadPhotosAlbum() {
         PhoneMediaControl mediaControl = new PhoneMediaControl();
-        mediaControl.setLoadalbumphoto(new PhoneMediaControl.loadAlbumPhoto() {
+        mediaControl.setLoadalbumphoto(new PhoneMediaControl.LoadAlbumPhoto() {
             @Override
             public void loadPhoto(ArrayList<PhotoAlbumEntry> albumsSorted_) {
                 objects.addAll(albumsSorted_);

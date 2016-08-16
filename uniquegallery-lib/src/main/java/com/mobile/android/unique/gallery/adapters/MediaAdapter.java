@@ -28,7 +28,13 @@ public class MediaAdapter extends BaseFragmentAdapter {
     private ImageLoader imageLoader = ImageLoader.getInstance();
     private VideoThumbleLoader thumbleLoader;
 
-
+    /**
+     * Parameterized constructor
+     *
+     * @param context   Activity Context
+     * @param photos    List of photo paths
+     * @param itemWidth item width
+     */
     public MediaAdapter(Context context, ArrayList<Object> photos, int itemWidth) {
         this.mContext = context;
         this.layoutInflater = (LayoutInflater) mContext

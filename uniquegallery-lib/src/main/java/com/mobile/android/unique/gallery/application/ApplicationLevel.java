@@ -16,10 +16,19 @@ public class ApplicationLevel {
     public static Point displaySize = new Point();
     public static float density = 1;
 
+    /**
+     * Used to convert DP value
+     *
+     * @param value actual value
+     * @return return result after conversion
+     */
     public static int dp(float value) {
         return (int) Math.ceil(density * value);
     }
 
+    /**
+     * Used get the display size
+     */
     public static void checkDisplaySize() {
         try {
             WindowManager manager = (WindowManager) applicationContext.getSystemService(Context.WINDOW_SERVICE);
@@ -38,6 +47,11 @@ public class ApplicationLevel {
         }
     }
 
+    /**
+     * It used to instial the display sizes
+     *
+     * @param context
+     */
     public void onCreate(Context context) {
         applicationContext = context;
         applicationHandler = new Handler(applicationContext.getMainLooper());

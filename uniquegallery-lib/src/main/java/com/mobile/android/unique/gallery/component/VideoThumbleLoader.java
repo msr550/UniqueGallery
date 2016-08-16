@@ -12,9 +12,6 @@ import android.widget.ProgressBar;
 import com.mobile.android.unique.gallery.R;
 import com.mobile.android.unique.gallery.application.ApplicationLevel;
 
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.util.Collections;
 import java.util.Map;
 import java.util.Stack;
@@ -29,12 +26,25 @@ public class VideoThumbleLoader {
     private Map<String, Bitmap> videoBitmap = Collections.synchronizedMap(new WeakHashMap<String, Bitmap>());
     private Context context = null;
 
+    /**
+     * Parameterized constructor with context as parameter
+     *
+     * @param context Context
+     */
     public VideoThumbleLoader(Context context) {
         this.context = context;
         //Make the background thead low priority. This way it will not affect the UI performance
         photoLoaderThread.setPriority(Thread.NORM_PRIORITY - 1);
     }
 
+    /**
+     * Used to display image from video path
+     *
+     * @param url         Video path
+     * @param _context    Context
+     * @param imageView   ImageView object
+     * @param progressBar Progressbar while loading
+     */
     public void DisplayImage(String url, Context _context, ImageView imageView, ProgressBar progressBar) {
         imageViews.put(imageView, url);
         Bitmap bitmap = videoBitmap.get(url);
@@ -49,6 +59,14 @@ public class VideoThumbleLoader {
         }
     }
 
+    /**
+     * Used to add in queue
+     *
+     * @param url         Video local path / url
+     * @param _context    Context
+     * @param imageView   ImageView object
+     * @param progressBar Progressbar while loading
+     */
     private void queuePhoto(String url, Context _context, ImageView imageView, ProgressBar progressBar) {
         //This ImageView may be used for other images before. So there may be some old tasks in the queue. We need to discard them.
         photosQueue.Clean(imageView);
@@ -63,6 +81,11 @@ public class VideoThumbleLoader {
             photoLoaderThread.start();
     }
 
+    /**
+     * used to get the bitmap by local path or url
+     * @param url local path or url
+     * @return returns the Bitmap
+     */
     private Bitmap getBitmap(String url) {
         BitmapFactory.Options options = new BitmapFactory.Options();
         options.inSampleSize = 1;
@@ -72,7 +95,7 @@ public class VideoThumbleLoader {
     }
 
     //decodes image and scales it to reduce memory consumption
-    private Bitmap decodeFile(File f) {
+   /* private Bitmap decodeFile(File f) {
         try {
             //decode image size
             BitmapFactory.Options o = new BitmapFactory.Options();
@@ -106,7 +129,7 @@ public class VideoThumbleLoader {
 
     public void clearCache() {
 
-    }
+    }*/
 
     //Task for the queue
     private class PhotoToLoad {

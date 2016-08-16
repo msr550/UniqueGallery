@@ -8,6 +8,11 @@ import android.util.Log;
 public class Logger {
     private static final String TAG = "==UniqueGallery==";
 
+    /**
+     * Used to display the logs which is used for debugging
+     *
+     * @param string log value
+     */
     public static void getInfo(String string) {
         Log.i(TAG, "===" + string + "===");
     }

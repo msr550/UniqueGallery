@@ -20,9 +20,14 @@ public class PhoneMediaVideoController {
             MediaStore.Video.Media.RESOLUTION, MediaStore.Video.Media.SIZE,
             MediaStore.Video.Media.DISPLAY_NAME,
             MediaStore.Video.Media.DURATION,};
-    public static loadAllVideoMediaInterface loadallvideomediainterface;
+    public static LoadAllVideoMediaInterface loadallvideomediainterface;
     private static Context context;
 
+    /**
+     * Used to load all videos from local paths
+     *
+     * @param mContext
+     */
     public static void loadAllVideoMedia(Context mContext) {
         context = mContext;
 
@@ -105,10 +110,21 @@ public class PhoneMediaVideoController {
         ;
     }
 
+    /**
+     * Used to run on Main thread
+     *
+     * @param runnable Runnable interface reference
+     */
     public static void runOnUIThread(Runnable runnable) {
         runOnUIThread(runnable, 0);
     }
 
+    /**
+     * Used to run on Main thread after certain time delay in millis
+     *
+     * @param runnable Runnable interface reference
+     * @param delay    delay in millis
+     */
     public static void runOnUIThread(Runnable runnable, long delay) {
         if (delay == 0) {
             ApplicationLevel.applicationHandler.post(runnable);
@@ -117,63 +133,31 @@ public class PhoneMediaVideoController {
         }
     }
 
-    public static loadAllVideoMediaInterface getLoadallvideomediainterface() {
+    /**
+     * used to get the LoadAllVideoMediaInterface interface reference
+     *
+     * @return LoadAllVideoMediaInterface interface reference
+     */
+    public static LoadAllVideoMediaInterface getLoadallvideomediainterface() {
         return loadallvideomediainterface;
     }
 
+    /**
+     * used to set the LoadAllVideoMediaInterface interface reference
+     *
+     * @param loadallvideomediainterface interface reference
+     */
     public static void setLoadallvideomediainterface(
-            loadAllVideoMediaInterface loadallvideomediainterface) {
+            LoadAllVideoMediaInterface loadallvideomediainterface) {
         PhoneMediaVideoController.loadallvideomediainterface = loadallvideomediainterface;
     }
 
-    public interface loadAllVideoMediaInterface {
+    public interface LoadAllVideoMediaInterface {
+        /**
+         * Used to load the videos from local paths
+         *
+         * @param videoAlbumList List of VideoAlbumEntry
+         */
         void loadVideo(ArrayList<VideoAlbumEntry> videoAlbumList);
     }
-
-  /*  /////////////added code
-    public static class AlbumEntry {
-        public int bucketId;
-        public String bucketName;
-        public VideoEntry coverPhoto;
-        public ArrayList<VideoEntry> photos = new ArrayList<VideoEntry>();
-
-        public AlbumEntry(int bucketId, String bucketName, VideoEntry coverPhoto) {
-            this.bucketId = bucketId;
-            this.bucketName = bucketName;
-            this.coverPhoto = coverPhoto;
-        }
-
-        public void addPhoto(VideoEntry photoEntry) {
-            photos.add(photoEntry);
-        }
-    }
-    /////////////added code
-
-    public static class VideoEntry {
-        public int imageId;
-        public int bucketId;
-        public String bucketName;
-        public String path;
-        public long dateTaken;
-        public String resolution;
-        public String size;
-        public String displayname;
-        public String duration;
-        public Bitmap curThumb;
-
-        public VideoEntry(int imageId, int bucketId, String bucketName,
-                            String path, long dateTaken, String resolution, String size,
-                            String displayname, String duration, Bitmap curThumb) {
-            this.imageId = imageId;
-            this.bucketId = bucketId;
-            this.bucketName = bucketName;
-            this.path = path;
-            this.dateTaken = dateTaken;
-            this.resolution = resolution;
-            this.size = size;
-            this.displayname = displayname;
-            this.duration = duration;
-            this.curThumb = curThumb;
-        }
-    }*/
 }
