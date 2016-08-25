@@ -1,0 +1,27 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.mobile.android.unique.gallery.fragments.AlbumFragment">
+
+    <GridView
+        android:id="@+id/grid_view"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_below="@+id/tool_bar"
+        android:layout_gravity="top"
+        android:clipToPadding="false"
+        android:drawSelectorOnTop="true"
+        android:gravity="center"
+        android:horizontalSpacing="4dp"
+        android:listSelector="@drawable/list_selector"
+        android:numColumns="auto_fit"
+        android:paddingBottom="3dp"
+        android:paddingLeft="3dp"
+        android:paddingRight="3dp"
+        android:paddingTop="3dp"
+        android:scrollbars="none"
+        android:stretchMode="columnWidth"
+        android:verticalSpacing="3dp" />
+
+</FrameLayout>

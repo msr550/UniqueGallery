@@ -44,4 +44,8 @@ public class StorageManager {
     public void setSelectedAlbumObject(Object object) {
         this.selectedAlbumObject = object;
     }
+
+    public void clearData() {
+        this.selectedAlbumObject = null;
+    }
 }

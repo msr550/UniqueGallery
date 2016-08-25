@@ -87,7 +87,7 @@ public class AlbumAdapter extends BaseFragmentAdapter {
             mViewHolder = new ViewHolder();
             view = inflater.inflate(R.layout.photo_picker_album_layout, viewGroup, false);
             mViewHolder.img = (ImageView) view.findViewById(R.id.media_photo_image);
-            //mViewHolder.playIV = (ImageView) view.findViewById(R.id.playIV);
+            mViewHolder.playIV = (ImageView) view.findViewById(R.id.playIV);
             mViewHolder.txtTitle = (TextView) view.findViewById(R.id.album_name);
             mViewHolder.txtCount = (TextView) view.findViewById(R.id.album_count);
             ViewGroup.LayoutParams params = view.getLayoutParams();
@@ -99,9 +99,9 @@ public class AlbumAdapter extends BaseFragmentAdapter {
             mViewHolder = (ViewHolder) view.getTag();
         }
         Object object = arrayVideoDetails.get(i);
-        // mViewHolder.playIV.setVisibility(View.GONE);
+        mViewHolder.playIV.setVisibility(View.GONE);
         if (object instanceof VideoAlbumEntry) {
-            //mViewHolder.playIV.setVisibility(View.VISIBLE);
+            mViewHolder.playIV.setVisibility(View.VISIBLE);
             VideoAlbumEntry videoAlbumEntry = (VideoAlbumEntry) object;
             thumbleLoader.DisplayImage("" + videoAlbumEntry.coverPhoto.imageId, mContext, mViewHolder.img, null);
             mViewHolder.txtTitle.setText(videoAlbumEntry.bucketName);
@@ -126,7 +126,7 @@ public class AlbumAdapter extends BaseFragmentAdapter {
     }
 
     private class ViewHolder {
-        ImageView img;
+        ImageView img, playIV;
         //  ImageView playIV;
         TextView txtTitle;
         TextView txtCount;

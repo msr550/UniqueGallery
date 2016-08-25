@@ -10,6 +10,7 @@ import android.widget.MediaController;
 import android.widget.VideoView;
 
 import com.mobile.android.unique.gallery.activities.AlbumActivity;
+import com.mobile.android.unique.gallery.activities.PhotosVideosAlbumActivity;
 import com.mobile.android.unique.gallery.extras.Data;
 import com.mobile.android.unique.gallery.extras.Media;
 import com.mobile.android.unique.gallery.models.PhotoEntry;
@@ -55,8 +56,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
                 startActivityForResult(intent, REQUEST_CODE);
                 break;
             case R.id.galleryBtn:
-                intent = new Intent(this, AlbumActivity.class);
-                intent.putExtra(Data.EXTRA_TYPE, Media.BOTH);
+                intent = new Intent(this, PhotosVideosAlbumActivity.class);
                 startActivityForResult(intent, REQUEST_CODE);
                 break;
             default:

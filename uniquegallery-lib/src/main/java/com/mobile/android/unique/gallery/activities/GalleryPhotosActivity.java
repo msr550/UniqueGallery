@@ -128,5 +128,6 @@ public class GalleryPhotosActivity extends BaseActivity implements AdapterView.O
             imageSelected = true;
             onBackPressed();
         }
+        StorageManager.getInstance().clearData();
     }
 }

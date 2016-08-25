@@ -4,11 +4,25 @@
     android:layout_gravity="top"
     android:background="#ff000000">
 
-    <ImageView
-        android:id="@+id/media_photo_image"
-        android:layout_width="fill_parent"
-        android:layout_height="fill_parent"
-        android:scaleType="centerCrop" />
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ImageView
+            android:id="@+id/media_photo_image"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:scaleType="centerCrop"
+            android:src="@drawable/nophotos" />
+
+        <ImageView
+            android:id="@+id/playIV"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:src="@drawable/ic_play_circle_outline_white_24dp"
+            android:visibility="visible" />
+    </RelativeLayout>
 
     <LinearLayout
         android:id="@+id/bottom_lin"

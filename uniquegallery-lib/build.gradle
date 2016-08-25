@@ -24,7 +24,31 @@ android {
         }
     }
 }
-bintray {
+ext {
+    bintrayRepo = 'Maven'
+    bintrayName = 'uniquegallery-lib'
+
+    publishedGroupId = 'com.mobile.android.unique.gallery'
+    libraryName = 'uniquegallery-lib'
+    artifact = 'uniquegallery-lib'
+
+    libraryDescription = 'It is used for custom gallery on Android'
+
+    siteUrl = 'https://github.com/msr550/UniqueGallery'
+    gitUrl = 'https://github.com/msr550/UniqueGallery.git'
+
+    libraryVersion = '1.0.0'
+
+    developerId = 'msr550'
+    developerName = 'Sandeep M'
+    developerEmail = 'msrt20@gmail.com'
+
+    licenseName = 'The Apache Software License, Version 2.0'
+    licenseUrl = 'http://www.apache.org/licenses/LICENSE-2.0.txt'
+    allLicenses = ["Apache-2.0"]
+}
+
+/*bintray {
     user = 'msr550'
     key = '8a9cb628f82867c650ab23c0296aa9b2cddb446f'
     pkg {
@@ -44,10 +68,15 @@ bintray {
         // your website or whatever has documentation
     }
     configurations = ['archives']
-}
+}*/
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
     testCompile 'junit:junit:4.12'
     compile 'com.android.support:appcompat-v7:23.4.0'
     compile 'com.nostra13.universalimageloader:universal-image-loader:1.9.5'
+    compile 'com.android.support:support-v4:23.4.0'
+    compile 'com.android.support:design:23.4.0'
 }
+// Place it at the end of the file
+apply from: 'https://raw.githubusercontent.com/nuuneoi/JCenter/master/installv1.gradle'
+apply from: 'https://raw.githubusercontent.com/nuuneoi/JCenter/master/bintrayv1.gradle'
