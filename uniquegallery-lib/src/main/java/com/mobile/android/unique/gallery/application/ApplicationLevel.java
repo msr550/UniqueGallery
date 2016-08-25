@@ -7,7 +7,7 @@ import android.view.Display;
 import android.view.WindowManager;
 
 /**
- * Created by user on 8/12/2016.
+ * Created by MSR on 8/12/2016.
  */
 public class ApplicationLevel {
 
@@ -57,24 +57,5 @@ public class ApplicationLevel {
         applicationHandler = new Handler(applicationContext.getMainLooper());
         checkDisplaySize();
         density = applicationContext.getResources().getDisplayMetrics().density;
-
-
-      /*  DisplayImageOptions defaultDisplayImageOptions = new DisplayImageOptions.Builder() //
-                .considerExifParams(true)
-                .resetViewBeforeLoading(true)
-                .showImageOnLoading(R.drawable.nophotos)
-                .showImageOnFail(R.drawable.nophotos)
-                .delayBeforeLoading(0)
-                .build(); //
-        ImageLoaderConfiguration config = new ImageLoaderConfiguration.Builder(
-                getApplicationContext())
-                .defaultDisplayImageOptions(defaultDisplayImageOptions)
-                .memoryCacheExtraOptions(480, 800).threadPoolSize(5).build();
-        ImageLoader.getInstance().init(config);*/
     }
-
-    /*@Override
-    public void onConfigurationChanged(Configuration newConfig) {
-        super.onConfigurationChanged(newConfig);
-    }*/
 }

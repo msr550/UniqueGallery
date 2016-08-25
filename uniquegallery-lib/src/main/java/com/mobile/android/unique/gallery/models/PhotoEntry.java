@@ -3,7 +3,7 @@ package com.mobile.android.unique.gallery.models;
 import java.io.Serializable;
 
 /**
- * Created by user on 8/11/2016.
+ * Created by MSR on 8/11/2016.
  */
 public class PhotoEntry implements Serializable {
     public int bucketId;

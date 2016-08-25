@@ -103,22 +103,19 @@ public class AlbumAdapter extends BaseFragmentAdapter {
         if (object instanceof VideoAlbumEntry) {
             mViewHolder.playIV.setVisibility(View.VISIBLE);
             VideoAlbumEntry videoAlbumEntry = (VideoAlbumEntry) object;
-            thumbleLoader.DisplayImage("" + videoAlbumEntry.coverPhoto.imageId, mContext, mViewHolder.img, null);
+            thumbleLoader.DisplayImage("" + videoAlbumEntry.coverVideo.videoId, mContext, mViewHolder.img, null);
             mViewHolder.txtTitle.setText(videoAlbumEntry.bucketName);
             mViewHolder.txtCount.setText(videoAlbumEntry.photos.size() + "");
             mViewHolder.img.setTag(videoAlbumEntry);
         } else if (object instanceof PhotoAlbumEntry) {
             PhotoAlbumEntry photoAlbumEntry = (PhotoAlbumEntry) object;
-            // final ImageView imageView = (ImageView) view.findViewById(R.id.media_photo_image);
             if (photoAlbumEntry.coverPhoto != null && photoAlbumEntry.coverPhoto.path != null) {
                 imageLoader.displayImage("file://" + photoAlbumEntry.coverPhoto.path, mViewHolder.img, options);
             } else {
                 mViewHolder.img.setImageResource(R.drawable.nophotos);
             }
             mViewHolder.img.setTag(photoAlbumEntry);
-            //  TextView textView = (TextView) view.findViewById(R.id.album_name);
             mViewHolder.txtTitle.setText(photoAlbumEntry.bucketName);
-            //  textView = (TextView) view.findViewById(R.id.album_count);
             mViewHolder.txtCount.setText("" + photoAlbumEntry.photos.size());
         }
 
@@ -127,7 +124,6 @@ public class AlbumAdapter extends BaseFragmentAdapter {
 
     private class ViewHolder {
         ImageView img, playIV;
-        //  ImageView playIV;
         TextView txtTitle;
         TextView txtCount;
     }

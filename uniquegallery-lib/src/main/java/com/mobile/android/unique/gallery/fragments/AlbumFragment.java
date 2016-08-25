@@ -21,7 +21,6 @@ import com.mobile.android.unique.gallery.component.PhoneMediaVideoController;
 import com.mobile.android.unique.gallery.extras.Media;
 import com.mobile.android.unique.gallery.models.PhotoAlbumEntry;
 import com.mobile.android.unique.gallery.models.VideoAlbumEntry;
-import com.mobile.android.unique.gallery.utils.Logger;
 import com.mobile.android.unique.gallery.utils.StorageManager;
 
 import java.util.ArrayList;
@@ -42,8 +41,6 @@ public class AlbumFragment extends Fragment implements AdapterView.OnItemClickLi
     private int itemWidth = 100;
     private Media mediaType = Media.PHOTO;
 
-    //video
-    // private ArrayList<PhoneMediaVideoController.AlbumEntry> arrayVideoDetails = new ArrayList<>();
     private ArrayList<Object> objects = new ArrayList<>();
     private AlbumAdapter albumAdapter = null;
     private Activity activity = null;
@@ -81,7 +78,6 @@ public class AlbumFragment extends Fragment implements AdapterView.OnItemClickLi
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_album, container, false);
         mView = (GridView) view.findViewById(R.id.grid_view);
-        Logger.getInfo("mediaTYpe::" + mediaType);
         mView.setOnItemClickListener(this);
         return view;
     }

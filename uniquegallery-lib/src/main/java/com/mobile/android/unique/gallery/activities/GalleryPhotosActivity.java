@@ -124,7 +124,6 @@ public class GalleryPhotosActivity extends BaseActivity implements AdapterView.O
             VideoEntry videoEntry = (VideoEntry) object;
             intent = new Intent();
             intent.putExtra(getString(R.string.bundle_path), videoEntry);
-            // path = photoEntry.path;
             imageSelected = true;
             onBackPressed();
         }

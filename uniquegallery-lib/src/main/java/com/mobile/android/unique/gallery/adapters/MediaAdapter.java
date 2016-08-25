@@ -109,7 +109,7 @@ public class MediaAdapter extends BaseFragmentAdapter {
         } else if (object instanceof VideoEntry) {
             mHolder.playIV.setVisibility(View.VISIBLE);
             VideoEntry albumEnrty = (VideoEntry) object;
-            thumbleLoader.DisplayImage("" + albumEnrty.imageId, mContext, mHolder.imageView, null);
+            thumbleLoader.DisplayImage("" + albumEnrty.videoId, mContext, mHolder.imageView, null);
             mHolder.imageView.setTag(albumEnrty);
         }
         return view;

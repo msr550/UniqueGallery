@@ -5,10 +5,10 @@ import android.graphics.Bitmap;
 import java.io.Serializable;
 
 /**
- * Created by user on 8/11/2016.
+ * Created by MSR on 8/11/2016.
  */
 public class VideoEntry implements Serializable {
-    public int imageId;
+    public int videoId;
     public int bucketId;
     public String bucketName;
     public String path;
@@ -19,10 +19,10 @@ public class VideoEntry implements Serializable {
     public String duration;
     public Bitmap curThumb;
 
-    public VideoEntry(int imageId, int bucketId, String bucketName,
+    public VideoEntry(int videoId, int bucketId, String bucketName,
                       String path, long dateTaken, String resolution, String size,
                       String displayname, String duration, Bitmap curThumb) {
-        this.imageId = imageId;
+        this.videoId = videoId;
         this.bucketId = bucketId;
         this.bucketName = bucketName;
         this.path = path;

@@ -37,7 +37,7 @@ public class PhoneMediaVideoController {
             public void run() {
                 Cursor cursor = null;
                 HashMap<Integer, VideoAlbumEntry> albums = new HashMap<Integer, VideoAlbumEntry>();
-                final ArrayList<VideoAlbumEntry> arrVideoDetails = new ArrayList<VideoAlbumEntry>();
+                final ArrayList<VideoAlbumEntry> videoAlbumEntriesList = new ArrayList<VideoAlbumEntry>();
                 try {
                     cursor = MediaStore.Video.query(ApplicationLevel.applicationContext.getContentResolver(), MediaStore.Video.Media.EXTERNAL_CONTENT_URI, projectionPhotos);
                     if (cursor != null) {
@@ -62,15 +62,6 @@ public class PhoneMediaVideoController {
                                 String displayname = cursor.getString(displaynameColumn);
                                 String duration = cursor.getString(durationColumn);
 
-//	 	                          String minikind cursor.getString( MediaStore.Video.Thumbnails.MINI_KIND);
-
-//								BitmapFactory.Options options = new BitmapFactory.Options();
-//								options.inSampleSize = 1;
-//								Bitmap curThumb = MediaStore.Video.Thumbnails.getThumbnail(
-//												ApplicationOwnGallery.applicationContext.getContentResolver(),imageId,
-//												MediaStore.Video.Thumbnails.MINI_KIND,
-//												options);
-
                                 VideoEntry mVideoEntry = new VideoEntry(imageId, bucketId, bucketName, path, dateTaken, resolution, size, displayname, duration, null);
 
 
@@ -78,11 +69,9 @@ public class PhoneMediaVideoController {
                                 if (albumEntry == null) {
                                     albumEntry = new VideoAlbumEntry(bucketId, bucketName, mVideoEntry);
                                     albums.put(bucketId, albumEntry);
-                                    arrVideoDetails.add(albumEntry);
+                                    videoAlbumEntriesList.add(albumEntry);
                                 }
                                 albumEntry.addPhoto(mVideoEntry);
-
-//	 	                           VideoEntry mVideoEntry=new VideoEntry(imageId, bucketId, bucketName, path, dateTaken, resolution, size, displayname, duration,curThumb);
                             }
                         }
                     }
@@ -101,7 +90,7 @@ public class PhoneMediaVideoController {
                 runOnUIThread(new Runnable() {
                     public void run() {
                         if (loadallvideomediainterface != null) {
-                            loadallvideomediainterface.loadVideo(arrVideoDetails);
+                            loadallvideomediainterface.loadVideo(videoAlbumEntriesList);
                         }
                     }
                 });
