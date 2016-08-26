@@ -50,18 +50,22 @@ public class AlbumActivity extends BaseActivity implements AdapterView.OnItemCli
         if (bundle != null) {
             mediaType = (Media) bundle.getSerializable(Data.EXTRA_TYPE);
         }
+        String title = "";
         switch (mediaType) {
             case PHOTO:
                 //  loadPhotos();
+                title = getString(R.string.photos);
                 loadMedia();
                 loadPhotosAlbum();
                 break;
             case VIDEO:
                 //loadVideos();
+                title = getString(R.string.videos);
                 loadMedia();
                 loadVideoAlbum();
                 break;
             case BOTH:
+                title = getString(R.string.gallery);
                 loadMedia();
                 loadPhotosAlbum();
                 loadVideoAlbum();
@@ -69,12 +73,14 @@ public class AlbumActivity extends BaseActivity implements AdapterView.OnItemCli
             default:
                 break;
         }
+        getSupportActionBar().setTitle(title);
     }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case android.R.id.home:
+                StorageManager.getInstance().clearData();
                 onBackPressed();
                 break;
         }

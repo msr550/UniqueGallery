@@ -28,7 +28,7 @@ public class GalleryPhotosActivity extends BaseActivity implements AdapterView.O
 
 
     private int itemWidth = 100;
-    private MediaAdapter photosAdapter;
+    private MediaAdapter mediaAdapter;
     private PhotoAlbumEntry photoAlbumEntry = null;
     private VideoAlbumEntry videoAlbum = null;
     private Intent intent = null;
@@ -64,15 +64,16 @@ public class GalleryPhotosActivity extends BaseActivity implements AdapterView.O
         if (object instanceof PhotoAlbumEntry) {
             photoAlbumEntry = (PhotoAlbumEntry) object;
             mediaList.addAll(photoAlbumEntry.photos);
-            toolbar.setTitle(photoAlbumEntry.bucketName + " (" + photoAlbumEntry.photos.size() + ")");
+            //toolbar.setTitle(photoAlbumEntry.bucketName + " (" + photoAlbumEntry.photos.size() + ")");
+            getSupportActionBar().setTitle(photoAlbumEntry.bucketName);
         } else if (object instanceof VideoAlbumEntry) {
             videoAlbum = (VideoAlbumEntry) object;
-            toolbar.setTitle(videoAlbum.bucketName + " (" + videoAlbum.photos.size() + ")");
+            getSupportActionBar().setTitle(videoAlbum.bucketName);
             mediaList.addAll(videoAlbum.photos);
         }
-        photosAdapter = new MediaAdapter(this, mediaList, itemWidth);
-        mView.setAdapter(photosAdapter);
-        photosAdapter.notifyDataSetChanged();
+        mediaAdapter = new MediaAdapter(this, mediaList, itemWidth);
+        mView.setAdapter(mediaAdapter);
+        mediaAdapter.notifyDataSetChanged();
         mView.setSelection(position);
         mView.setOnItemClickListener(this);
         LoadAllAlbum();
@@ -89,14 +90,14 @@ public class GalleryPhotosActivity extends BaseActivity implements AdapterView.O
     }
 
     /**
-     * Used to load photosAdapter object
+     * Used to load mediaAdapter object
      */
     private void LoadAllAlbum() {
         if (mView != null && mView.getEmptyView() == null) {
             mView.setEmptyView(null);
         }
-        if (photosAdapter != null) {
-            photosAdapter.notifyDataSetChanged();
+        if (mediaAdapter != null) {
+            mediaAdapter.notifyDataSetChanged();
         }
     }
 

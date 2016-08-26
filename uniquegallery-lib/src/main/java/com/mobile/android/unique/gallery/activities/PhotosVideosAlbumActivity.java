@@ -12,6 +12,7 @@ import android.view.MenuItem;
 import com.mobile.android.unique.gallery.R;
 import com.mobile.android.unique.gallery.extras.Media;
 import com.mobile.android.unique.gallery.fragments.AlbumFragment;
+import com.mobile.android.unique.gallery.utils.StorageManager;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -26,6 +27,7 @@ public class PhotosVideosAlbumActivity extends BaseActivity {
         setContentView(R.layout.activity_photos_videos_album);
         Toolbar toolbar = (Toolbar) findViewById(R.id.tool_bar);
         setSupportActionBar(toolbar);
+        getSupportActionBar().setTitle(getString(R.string.gallery));
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         viewPager = (ViewPager) findViewById(R.id.viewpager);
         setupViewPager(viewPager);
@@ -45,6 +47,7 @@ public class PhotosVideosAlbumActivity extends BaseActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case android.R.id.home:
+                StorageManager.getInstance().clearData();
                 onBackPressed();
                 break;
         }
