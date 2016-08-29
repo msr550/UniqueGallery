@@ -2,6 +2,5 @@
 <resources>
     <string name="bundle_key_id">Key_ID</string>
     <string name="bundle_key_name">Key_Name</string>
-    <string name="bundle_path">path</string>
 
 </resources>

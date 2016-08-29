@@ -8,4 +8,6 @@ public class Data {
      * Bundle type key which is used to pass as a bundle
      */
     public static final String EXTRA_TYPE = "type";
+    public static final String EXTRA_BUNDLE_DATA = "bundle_data";
+
 }

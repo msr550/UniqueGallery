@@ -86,7 +86,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
         if (requestCode == REQUEST_CODE && resultCode == RESULT_OK) {
             if (data != null) {
                 videoView = (VideoView) findViewById(R.id.videoView);
-                Object object = data.getSerializableExtra(getString(R.string.bundle_path));
+                Object object = data.getSerializableExtra(Data.EXTRA_BUNDLE_DATA);
                 if (object instanceof PhotoEntry) {
                     selectedIV.setVisibility(View.VISIBLE);
                     videoView.setVisibility(View.GONE);

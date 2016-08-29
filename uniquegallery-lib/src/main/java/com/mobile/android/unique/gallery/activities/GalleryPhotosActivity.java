@@ -12,6 +12,7 @@ import android.widget.ImageView;
 import com.mobile.android.unique.gallery.R;
 import com.mobile.android.unique.gallery.adapters.MediaAdapter;
 import com.mobile.android.unique.gallery.application.ApplicationLevel;
+import com.mobile.android.unique.gallery.extras.Data;
 import com.mobile.android.unique.gallery.models.PhotoAlbumEntry;
 import com.mobile.android.unique.gallery.models.PhotoEntry;
 import com.mobile.android.unique.gallery.models.VideoAlbumEntry;
@@ -118,13 +119,13 @@ public class GalleryPhotosActivity extends BaseActivity implements AdapterView.O
         if (object instanceof PhotoEntry) {
             PhotoEntry photoEntry = (PhotoEntry) object;
             intent = new Intent();
-            intent.putExtra(getString(R.string.bundle_path), photoEntry);
+            intent.putExtra(Data.EXTRA_BUNDLE_DATA, photoEntry);
             imageSelected = true;
             onBackPressed();
         } else if (object instanceof VideoEntry) {
             VideoEntry videoEntry = (VideoEntry) object;
             intent = new Intent();
-            intent.putExtra(getString(R.string.bundle_path), videoEntry);
+            intent.putExtra(Data.EXTRA_BUNDLE_DATA, videoEntry);
             imageSelected = true;
             onBackPressed();
         }
