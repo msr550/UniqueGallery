@@ -18,6 +18,7 @@ import com.mobile.android.unique.gallery.models.PhotoEntry;
 import com.mobile.android.unique.gallery.models.VideoAlbumEntry;
 import com.mobile.android.unique.gallery.models.VideoEntry;
 import com.mobile.android.unique.gallery.utils.StorageManager;
+import com.mobile.android.unique.gallery.views.Header;
 
 import java.util.ArrayList;
 
@@ -46,9 +47,11 @@ public class GalleryPhotosActivity extends BaseActivity implements AdapterView.O
      * Initiate the actionBar
      */
     private void initializeActionBar() {
-        toolbar = (Toolbar) findViewById(R.id.tool_bar);
+       /* toolbar = (Toolbar) findViewById(R.id.tool_bar);
         setSupportActionBar(toolbar);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);*/
+        header = (Header) findViewById(R.id.header);
+        header.initHeader();
     }
 
     /**
@@ -65,11 +68,13 @@ public class GalleryPhotosActivity extends BaseActivity implements AdapterView.O
         if (object instanceof PhotoAlbumEntry) {
             photoAlbumEntry = (PhotoAlbumEntry) object;
             mediaList.addAll(photoAlbumEntry.photos);
+            header.titleTV.setText(photoAlbumEntry.photos.size());
             //toolbar.setTitle(photoAlbumEntry.bucketName + " (" + photoAlbumEntry.photos.size() + ")");
-            getSupportActionBar().setTitle(photoAlbumEntry.bucketName);
+            //   getSupportActionBar().setTitle(photoAlbumEntry.bucketName);
         } else if (object instanceof VideoAlbumEntry) {
             videoAlbum = (VideoAlbumEntry) object;
-            getSupportActionBar().setTitle(videoAlbum.bucketName);
+            //  getSupportActionBar().setTitle(videoAlbum.bucketName);
+            header.titleTV.setText(videoAlbum.bucketName);
             mediaList.addAll(videoAlbum.photos);
         }
         mediaAdapter = new MediaAdapter(this, mediaList, itemWidth);

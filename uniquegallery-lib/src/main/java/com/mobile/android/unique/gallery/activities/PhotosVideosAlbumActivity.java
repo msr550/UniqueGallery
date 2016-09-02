@@ -6,13 +6,13 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
-import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 
 import com.mobile.android.unique.gallery.R;
 import com.mobile.android.unique.gallery.extras.Media;
 import com.mobile.android.unique.gallery.fragments.AlbumFragment;
 import com.mobile.android.unique.gallery.utils.StorageManager;
+import com.mobile.android.unique.gallery.views.Header;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -25,10 +25,13 @@ public class PhotosVideosAlbumActivity extends BaseActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_photos_videos_album);
-        Toolbar toolbar = (Toolbar) findViewById(R.id.tool_bar);
-        setSupportActionBar(toolbar);
-        getSupportActionBar().setTitle(getString(R.string.gallery));
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        /*Toolbar toolbar = (Toolbar) findViewById(R.id.tool_bar);
+        setSupportActionBar(toolbar);*/
+        header = (Header) findViewById(R.id.header);
+        header.initHeader();
+        header.titleTV.setText(getString(R.string.gallery));
+        //getSupportActionBar().setTitle(getString(R.string.gallery));
+        //getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         viewPager = (ViewPager) findViewById(R.id.viewpager);
         setupViewPager(viewPager);
         tabLayout = (TabLayout) findViewById(R.id.tabs);

@@ -6,15 +6,16 @@
     android:background="@android:color/black"
     tools:context="com.mobile.android.unique.gallery.activities.AlbumActivity">
 
-    <include
-        android:id="@+id/tool_bar"
-        layout="@layout/toolbar" />
+    <com.mobile.android.unique.gallery.views.Header
+        android:id="@+id/header"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/header_height"></com.mobile.android.unique.gallery.views.Header>
 
     <GridView
         android:id="@+id/grid_view"
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
-        android:layout_below="@+id/tool_bar"
+        android:layout_below="@+id/header"
         android:layout_gravity="top"
         android:clipToPadding="false"
         android:drawSelectorOnTop="true"

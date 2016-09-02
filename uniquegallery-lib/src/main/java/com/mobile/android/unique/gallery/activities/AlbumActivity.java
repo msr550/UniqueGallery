@@ -2,7 +2,6 @@ package com.mobile.android.unique.gallery.activities;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
@@ -19,6 +18,7 @@ import com.mobile.android.unique.gallery.extras.Media;
 import com.mobile.android.unique.gallery.models.PhotoAlbumEntry;
 import com.mobile.android.unique.gallery.models.VideoAlbumEntry;
 import com.mobile.android.unique.gallery.utils.StorageManager;
+import com.mobile.android.unique.gallery.views.Header;
 
 import java.util.ArrayList;
 
@@ -43,9 +43,11 @@ public class AlbumActivity extends BaseActivity implements AdapterView.OnItemCli
         setContentView(R.layout.activity_album);
         mView = (GridView) findViewById(R.id.grid_view);
         mView.setOnItemClickListener(this);
-        Toolbar toolbar = (Toolbar) findViewById(R.id.tool_bar);
-        setSupportActionBar(toolbar);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        // Toolbar toolbar = (Toolbar) findViewById(R.id.tool_bar);
+        // setSupportActionBar(toolbar);
+        //getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        header = (Header) findViewById(R.id.header);
+        header.initHeader();
         Bundle bundle = getIntent().getExtras();
         if (bundle != null) {
             mediaType = (Media) bundle.getSerializable(Data.EXTRA_TYPE);
@@ -73,7 +75,8 @@ public class AlbumActivity extends BaseActivity implements AdapterView.OnItemCli
             default:
                 break;
         }
-        getSupportActionBar().setTitle(title);
+        //   getSupportActionBar().setTitle(title);
+        header.titleTV.setText(title);
     }
 
     @Override
