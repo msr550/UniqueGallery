@@ -22,7 +22,7 @@ import com.mobile.android.unique.gallery.views.Header;
 
 import java.util.ArrayList;
 
-public class AlbumActivity extends BaseActivity implements AdapterView.OnItemClickListener {
+public class AlbumActivity extends BaseActivity implements AdapterView.OnItemClickListener, View.OnClickListener {
     private final int REQUEST_CODE_PHOTOS = 100;
     // protected ArrayList<PhoneMediaControl.AlbumEntry> albumsSorted = new ArrayList<>();
     private GridView mView;
@@ -48,6 +48,7 @@ public class AlbumActivity extends BaseActivity implements AdapterView.OnItemCli
         //getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         header = (Header) findViewById(R.id.header);
         header.initHeader();
+        header.backIB.setOnClickListener(this);
         Bundle bundle = getIntent().getExtras();
         if (bundle != null) {
             mediaType = (Media) bundle.getSerializable(Data.EXTRA_TYPE);
@@ -198,5 +199,10 @@ public class AlbumActivity extends BaseActivity implements AdapterView.OnItemCli
             Intent mIntent = new Intent(AlbumActivity.this, GalleryPhotosActivity.class);
             startActivityForResult(mIntent, REQUEST_CODE_PHOTOS);
         }
+    }
+
+    @Override
+    public void onClick(View v) {
+        onBackPressed();
     }
 }

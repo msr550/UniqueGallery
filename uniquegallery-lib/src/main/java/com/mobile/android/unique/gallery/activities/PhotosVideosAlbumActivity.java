@@ -7,6 +7,7 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.view.MenuItem;
+import android.view.View;
 
 import com.mobile.android.unique.gallery.R;
 import com.mobile.android.unique.gallery.extras.Media;
@@ -17,7 +18,7 @@ import com.mobile.android.unique.gallery.views.Header;
 import java.util.ArrayList;
 import java.util.List;
 
-public class PhotosVideosAlbumActivity extends BaseActivity {
+public class PhotosVideosAlbumActivity extends BaseActivity implements View.OnClickListener {
     private TabLayout tabLayout;
     private ViewPager viewPager;
 
@@ -30,6 +31,7 @@ public class PhotosVideosAlbumActivity extends BaseActivity {
         header = (Header) findViewById(R.id.header);
         header.initHeader();
         header.titleTV.setText(getString(R.string.gallery));
+        header.backIB.setOnClickListener(this);
         //getSupportActionBar().setTitle(getString(R.string.gallery));
         //getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         viewPager = (ViewPager) findViewById(R.id.viewpager);
@@ -55,6 +57,11 @@ public class PhotosVideosAlbumActivity extends BaseActivity {
                 break;
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    public void onClick(View v) {
+        onBackPressed();
     }
 
     class ViewPagerAdapter extends FragmentPagerAdapter {

@@ -22,7 +22,7 @@ import com.mobile.android.unique.gallery.views.Header;
 
 import java.util.ArrayList;
 
-public class GalleryPhotosActivity extends BaseActivity implements AdapterView.OnItemClickListener {
+public class GalleryPhotosActivity extends BaseActivity implements AdapterView.OnItemClickListener, View.OnClickListener {
     private Toolbar toolbar;
     private GridView mView;
     private boolean imageSelected = false;
@@ -52,6 +52,7 @@ public class GalleryPhotosActivity extends BaseActivity implements AdapterView.O
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);*/
         header = (Header) findViewById(R.id.header);
         header.initHeader();
+        header.backIB.setOnClickListener(this);
     }
 
     /**
@@ -68,7 +69,7 @@ public class GalleryPhotosActivity extends BaseActivity implements AdapterView.O
         if (object instanceof PhotoAlbumEntry) {
             photoAlbumEntry = (PhotoAlbumEntry) object;
             mediaList.addAll(photoAlbumEntry.photos);
-            header.titleTV.setText(photoAlbumEntry.photos.size());
+            header.titleTV.setText(photoAlbumEntry.bucketName + "");
             //toolbar.setTitle(photoAlbumEntry.bucketName + " (" + photoAlbumEntry.photos.size() + ")");
             //   getSupportActionBar().setTitle(photoAlbumEntry.bucketName);
         } else if (object instanceof VideoAlbumEntry) {
@@ -135,5 +136,10 @@ public class GalleryPhotosActivity extends BaseActivity implements AdapterView.O
             onBackPressed();
         }
         StorageManager.getInstance().clearData();
+    }
+
+    @Override
+    public void onClick(View v) {
+        onBackPressed();
     }
 }
